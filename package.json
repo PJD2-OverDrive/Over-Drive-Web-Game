@@ -1,0 +1,20 @@
+{
+  "name": "over-drive-web-game",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "client",
+    "shared",
+    "server"
+  ],
+  "scripts": {
+    "dev": "bun run --parallel --filter @overdrive/client --filter @overdrive/server dev",
+    "dev:client": "bun run --filter @overdrive/client dev",
+    "dev:server": "bun run --filter @overdrive/server dev",
+    "build": "bun run --filter @overdrive/client build",
+    "typecheck": "bun run --filter '*' typecheck"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.0"
+  }
+}
