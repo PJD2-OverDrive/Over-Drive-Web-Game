@@ -3,7 +3,7 @@
 Monorepo com três sistemas independentes:
 
 ```
-client/   → roda no navegador: canvas, input, renderização, conexão WebSocket
+client/   → roda no navegador: Phaser (canvas, cenas, input, renderização)
 shared/   → contrato comum: tipos de mensagem, constantes do mundo, matemática
 server/   → roda no Bun: estado autoritativo, loop de simulação, broadcast
 ```
@@ -20,9 +20,10 @@ root/
 │   ├── index.html
 │   ├── vite.config.ts
 │   └── src/
-│       ├── main.ts             # liga engine, input e rede
-│       ├── engine/             # Game.ts (canvas), Input.ts (teclado)
-│       └── net/Connection.ts   # WebSocket + reconexão
+│       ├── main.ts             # configuração e boot do Phaser
+│       ├── style.css
+│       └── scenes/
+│           └── HelloWorldScene.ts  # cena inicial (texto "Hello World")
 ├── shared/                     # arquivos compartilhados entre client e server
 │   └── src/
 │       ├── protocol.ts         # ClientMessage / ServerMessage
@@ -34,7 +35,8 @@ root/
         └── room.ts             # estado autoritativo do jogo
 ```
 
-Stack: **TypeScript**, **Bun** (workspaces, servidor) e **Vite** (client).
+Stack: **TypeScript**, **Bun** (workspaces, servidor), **Vite** (client) e
+**Phaser** (engine do jogo).
 
 ## Como rodar
 
@@ -55,7 +57,9 @@ bun run typecheck
 bun run build
 ```
 
-Abra duas abas para ver dois jogadores. WASD ou setas para mover.
+O client atual é um template vazio em Phaser que exibe apenas "Hello World"
+centralizado em Arial. O `server` e o `shared` continuam disponíveis para
+quando o jogo for implementado.
 
 ## Como os três sistemas conversam
 
@@ -83,8 +87,8 @@ Abra duas abas para ver dois jogadores. WASD ou setas para mover.
 | Uma regra/constante do jogo (velocidade, tamanho, tick) | `shared/src/constants.ts` |
 | Movimento, colisão, dano, pontuação | `server/src/room.ts` |
 | Entrada de dados novos do jogador | `client/src/engine/Input.ts` |
-| Desenho, câmera, efeitos | `client/src/engine/Game.ts` |
-| URL do servidor, reconexão | `client/src/net/Connection.ts` |
+| Desenho, câmera, efeitos | `client/src/scenes/` |
+| Boot e configuração do Phaser | `client/src/main.ts` |
 
 ## Próximos passos naturais
 
