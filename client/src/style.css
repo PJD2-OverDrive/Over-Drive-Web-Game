@@ -1,22 +1,14 @@
-:root {
-  color-scheme: dark;
-}
-
-* {
-  box-sizing: border-box;
-}
-
 html,
 body {
   margin: 0;
   height: 100%;
-  overflow: hidden;
   background: #05070d;
 }
 
-#game {
-  width: 100vw;
-  height: 100vh;
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 canvas {

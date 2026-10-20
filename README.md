@@ -20,10 +20,8 @@ root/
 │   ├── index.html
 │   ├── vite.config.ts
 │   └── src/
-│       ├── main.ts             # configuração e boot do Phaser
-│       ├── style.css
-│       └── scenes/
-│           └── HelloWorldScene.ts  # cena inicial (texto "Hello World")
+│       ├── main.ts             # configuração, cena e texto "Hello World"
+│       └── style.css
 ├── shared/                     # arquivos compartilhados entre client e server
 │   └── src/
 │       ├── protocol.ts         # ClientMessage / ServerMessage
@@ -87,7 +85,7 @@ quando o jogo for implementado.
 | Uma regra/constante do jogo (velocidade, tamanho, tick) | `shared/src/constants.ts` |
 | Movimento, colisão, dano, pontuação | `server/src/room.ts` |
 | Entrada de dados novos do jogador | `client/src/engine/Input.ts` |
-| Desenho, câmera, efeitos | `client/src/scenes/` |
+| Desenho, câmera, efeitos, cenas | `client/src/main.ts` |
 | Boot e configuração do Phaser | `client/src/main.ts` |
 
 ## Próximos passos naturais

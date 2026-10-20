@@ -1,15 +1,22 @@
 import Phaser from "phaser";
-import { HelloWorldScene } from "./scenes/HelloWorldScene";
 
-const config: Phaser.Types.Core.GameConfig = {
+class HelloWorldScene extends Phaser.Scene {
+  create(): void {
+    this.add
+      .text(400, 300, "Hello World", {
+        fontFamily: "Arial, Helvetica, sans-serif",
+        fontSize: "48px",
+        color: "#ffffff",
+      })
+      .setOrigin(0.5);
+  }
+}
+
+new Phaser.Game({
   type: Phaser.AUTO,
-  parent: "game",
+  width: 800,
+  height: 600,
   backgroundColor: "#05070d",
-  scale: {
-    mode: Phaser.Scale.RESIZE,
-    autoCenter: Phaser.Scale.CENTER_BOTH,
-  },
-  scene: [HelloWorldScene],
-};
-
-new Phaser.Game(config);
+  parent: "game",
+  scene: HelloWorldScene,
+});
